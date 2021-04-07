@@ -56,6 +56,11 @@ Statyczna wersja biblioteki htmlcxx.
 %prep
 %setup -q
 
+# convert to utf8 due rpmlint warning W: file-not-utf8 %{_docdir}/htmlcxx/AUTHORS
+# convert to utf8 due rpmlint warning W: file-not-utf8 %{_docdir}/htmlcxx/README
+iconv -f iso8859-1 -t utf-8 AUTHORS > AUTHORS.conv && mv -f AUTHORS.conv AUTHORS
+iconv -f iso8859-1 -t utf-8 README > README.conv && mv -f README.conv README
+
 %build
 autoupdate
 %{__libtoolize}
@@ -66,11 +71,6 @@ autoupdate
 %configure \
 	%{?with_static_libs:--enable-static} \
 	--enable-shared
-
-# convert to utf8 due rpmlint warning W: file-not-utf8 %{_docdir}/htmlcxx/AUTHORS
-# convert to utf8 due rpmlint warning W: file-not-utf8 %{_docdir}/htmlcxx/README
-iconv -f iso8859-1 -t utf-8 AUTHORS > AUTHORS.conv && mv -f AUTHORS.conv AUTHORS
-iconv -f iso8859-1 -t utf-8 README > README.conv && mv -f README.conv README
 
 %{__make}
 
