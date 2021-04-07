@@ -8,15 +8,16 @@ Version:	0.87
 Release:	1
 License:	LGPLv2 and GPLv2+ and ASL 2.0 and MIT
 Group:		Development/Libraries
-URL:		http://htmlcxx.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/htmlcxx/%{name}-%{version}.tar.gz
 # Source0-md5:	3f6429102fc0670c31ac589e8cd7543c
+URL:		http://htmlcxx.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	flex
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	skip_post_check_so libcss_parser_pp.so.*
@@ -30,7 +31,6 @@ traversal API.
 %package devel
 Summary:	Headers and Static Library for htmlcxx
 Group:		Development/Libraries
-BuildRequires:	pkgconfig
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
