@@ -92,20 +92,26 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README COPYING LGPL_V2 ASF-2.0
 %attr(755,root,root) %{_bindir}/htmlcxx
-%{_datadir}/htmlcxx
+%attr(755,root,root) %{_libdir}/libcss_parser.so.*.*.*
+%attr(755,root,root) %{_libdir}/libcss_parser_pp.so.*.*.*
+%attr(755,root,root) %{_libdir}/libhtmlcxx.so.*.*.*
 %ghost %{_libdir}/libcss_parser.so.0
 %ghost %{_libdir}/libcss_parser_pp.so.0
 %ghost %{_libdir}/libhtmlcxx.so.3
-%{_libdir}/*.so.*.*
+%{_datadir}/htmlcxx
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/*
-%{_libdir}/*.so
-%{_pkgconfigdir}/%{name}.pc
+%{_includedir}/htmlcxx
+%{_libdir}/libcss_parser.so
+%{_libdir}/libcss_parser_pp.so
+%{_libdir}/libhtmlcxx.so
+%{_pkgconfigdir}/htmlcxx.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
+%{_libdir}/libcss_parser.a
+%{_libdir}/libcss_parser_pp.a
+%{_libdir}/libhtmlcxx.a
 %endif
